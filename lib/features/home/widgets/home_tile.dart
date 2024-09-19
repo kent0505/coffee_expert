@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../core/config/app_colors.dart';
+import '../../../core/config/router.dart';
 import '../../../core/widgets/texts/text_r.dart';
 
 class HomeTile extends StatelessWidget {
@@ -74,7 +75,15 @@ class HomeTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(24),
       ),
       child: CupertinoButton(
-        onPressed: () {},
+        onPressed: () {
+          if (title == 'Coffee varieties') {
+            context.push(Routes.varieties);
+          } else if (title == 'Popular cafes') {
+            context.push(Routes.varieties);
+          } else {
+            context.push(Routes.varieties);
+          }
+        },
         padding: EdgeInsets.zero,
         child: Row(
           children: [

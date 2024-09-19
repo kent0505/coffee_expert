@@ -98,13 +98,15 @@ class HomePage extends StatelessWidget {
                 SizedBox(height: 14),
                 HomeTile(
                   title: 'Popular cafes',
-                  description: 'Learn all about the different types of coffee',
+                  description:
+                      'Famous coffee shops of the world with the best coffee',
                 ),
                 SizedBox(height: 14),
                 HomeTile(
                   title: 'News',
-                  description: 'Learn all about the different types of coffee',
+                  description: 'The latest news from the world of coffee',
                 ),
+                SizedBox(height: 24),
               ],
             ),
           ),
