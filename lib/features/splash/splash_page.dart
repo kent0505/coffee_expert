@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../core/config/app_colors.dart';
 import '../../core/config/router.dart';
 import '../../core/db/prefs.dart';
 import '../../core/widgets/custom_scaffold.dart';
-import '../../core/widgets/loading_widget.dart';
+import '../../core/widgets/texts/text_r.dart';
 import '../test/bloc/test_bloc.dart';
 
 class SplashPage extends StatefulWidget {
@@ -15,15 +16,22 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  bool loading = false;
+
   void load() async {
-    context.read<TestBloc>().add(GetTestEvent());
+    await Future.delayed(Duration.zero, () {
+      setState(() {
+        loading = true;
+      });
+    });
+
+    if (mounted) context.read<TestBloc>().add(GetTestEvent());
 
     await getData().then((onboard) {
       Future.delayed(const Duration(seconds: 2), () {
         if (mounted) {
           if (onboard) {
-            // context.go(Routes.onboard);
-            context.go(Routes.home);
+            context.go(Routes.onboard);
           } else {
             context.go(Routes.home);
           }
@@ -40,9 +48,58 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    return const CustomScaffold(
+    return CustomScaffold(
       splash: true,
-      body: LoadingWidget(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              height: 165,
+              width: 165,
+              decoration: const BoxDecoration(
+                color: AppColors.white,
+                shape: BoxShape.circle,
+              ),
+              child: Center(
+                child: Image.asset(
+                  'assets/logo.png',
+                  height: 106,
+                ),
+              ),
+            ),
+            const SizedBox(height: 74),
+            Container(
+              height: 9,
+              width: 165,
+              padding: const EdgeInsets.all(2),
+              decoration: BoxDecoration(
+                color: AppColors.text1,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Row(
+                children: [
+                  AnimatedContainer(
+                    duration: const Duration(seconds: 2),
+                    height: 5,
+                    width: loading ? 161 : 0,
+                    decoration: BoxDecoration(
+                      color: AppColors.main,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 8),
+            const TextB(
+              'Loading...',
+              fontSize: 12,
+              color: AppColors.text1,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

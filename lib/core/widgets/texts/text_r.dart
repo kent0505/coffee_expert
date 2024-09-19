@@ -29,6 +29,7 @@ class TextR extends StatelessWidget {
         color: color,
         fontSize: fontSize,
         fontFamily: Fonts.regular,
+        height: 1.2,
       ),
     );
   }

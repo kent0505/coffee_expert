@@ -8,11 +8,13 @@ class CustomScaffold extends StatelessWidget {
     required this.body,
     this.home = false,
     this.splash = false,
+    this.recipe = false,
   });
 
   final Widget body;
   final bool home;
   final bool splash;
+  final bool recipe;
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +33,9 @@ class CustomScaffold extends StatelessWidget {
                 if (home)
                   Container(
                     height: 240,
-                    decoration: const BoxDecoration(
-                      color: AppColors.bg2,
-                      borderRadius: BorderRadius.vertical(
+                    decoration: BoxDecoration(
+                      color: recipe ? AppColors.card1 : AppColors.bg2,
+                      borderRadius: const BorderRadius.vertical(
                         bottom: Radius.circular(34),
                       ),
                     ),

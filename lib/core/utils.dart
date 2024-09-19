@@ -79,12 +79,18 @@ void logger(Object message) {
 
 void precacheImages(BuildContext context) {
   try {
-    // List<String> imageAssets = [
-    //   '',
-    // ];
-    // for (String assets in imageAssets) {
-    //   precacheImage(AssetImage(assets), context);
-    // }
+    List<String> imageAssets = [
+      'assets/logo.png',
+      'assets/onboard1.png',
+      'assets/onboard2.png',
+      'assets/onboard3.png',
+      'assets/recipe1.png',
+      'assets/recipe2.png',
+      'assets/recipe3.png',
+    ];
+    for (String assets in imageAssets) {
+      precacheImage(AssetImage(assets), context);
+    }
   } catch (e) {
     logger(e);
   }

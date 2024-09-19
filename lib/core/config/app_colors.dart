@@ -8,7 +8,7 @@ class AppColors {
   static const Color text1 = Color(0xff742903);
   static const Color text2 = Color(0xff996A54);
   static const Color text3 = Color(0xffFFAE86);
-  static const Color text4 = Color(0xff5F280C);
+  static Color text4 = const Color(0xff5F280C).withOpacity(0.64);
   static const Color textfield = Color(0xff494949);
   static const Color card1 = Color(0xff2E2E2E);
   static const Color card2 = Color(0xffFFC8AD);

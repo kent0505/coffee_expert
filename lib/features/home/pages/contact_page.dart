@@ -102,20 +102,11 @@ class _ContactPageState extends State<ContactPage> {
               ),
             ],
           ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: const EdgeInsets.only(
-                bottom: 70,
-                left: 24,
-                right: 24,
-              ),
-              child: PrimaryButton(
-                title: 'Send',
-                active: active,
-                onPressed: onSend,
-              ),
-            ),
+          PrimaryButton(
+            title: 'Send',
+            active: active,
+            bottom: true,
+            onPressed: onSend,
           ),
         ],
       ),
