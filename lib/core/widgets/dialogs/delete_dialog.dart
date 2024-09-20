@@ -17,7 +17,7 @@ class DeleteDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      backgroundColor: AppColors.main,
+      backgroundColor: AppColors.card1,
       child: SizedBox(
         height: 150,
         child: Column(
@@ -26,6 +26,7 @@ class DeleteDialog extends StatelessWidget {
             TextB(
               title,
               fontSize: 18,
+              color: AppColors.main,
             ),
             const Spacer(),
             Row(

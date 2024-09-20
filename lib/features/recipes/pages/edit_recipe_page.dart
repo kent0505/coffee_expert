@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
@@ -11,6 +12,7 @@ import '../../../core/utils.dart';
 import '../../../core/widgets/buttons/primary_button.dart';
 import '../../../core/widgets/custom_appbar.dart';
 import '../../../core/widgets/custom_scaffold.dart';
+import '../../../core/widgets/dialogs/delete_dialog.dart';
 import '../../../core/widgets/textfields/txt_field.dart';
 import '../../../core/widgets/texts/text_r.dart';
 import '../bloc/recipes_bloc.dart';
@@ -70,6 +72,24 @@ class _EditRecipePageState extends State<EditRecipePage> {
     context.pop();
   }
 
+  void onDelete() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return DeleteDialog(
+          title: 'Delete Recipe?',
+          onYes: () {
+            context
+                .read<RecipesBloc>()
+                .add(DeleteRecipesEvent(id: widget.recipe.id));
+            context.pop();
+            context.pop();
+          },
+        );
+      },
+    );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -96,7 +116,12 @@ class _EditRecipePageState extends State<EditRecipePage> {
         children: [
           Column(
             children: [
-              const CustomAppbar(title: 'Edit Recipe'),
+              CustomAppbar(
+                title: 'Edit Recipe',
+                settings: false,
+                delete: true,
+                onDelete: onDelete,
+              ),
               Expanded(
                 child: ListView(
                   padding: const EdgeInsets.symmetric(horizontal: 24),

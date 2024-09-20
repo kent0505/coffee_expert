@@ -5,6 +5,7 @@ import '../../../core/config/router.dart';
 import '../../../core/widgets/buttons/primary_button.dart';
 import '../../../core/widgets/custom_appbar.dart';
 import '../../../core/widgets/custom_scaffold.dart';
+import '../widgets/no_recipes.dart';
 import '../widgets/recipe_card.dart';
 import '../bloc/recipes_bloc.dart';
 
@@ -23,6 +24,8 @@ class RecipesPage extends StatelessWidget {
                 child: BlocBuilder<RecipesBloc, RecipesState>(
                   builder: (context, state) {
                     if (state is RecipesLoadedState) {
+                      if (state.recipes.isEmpty) return const NoRecipes();
+
                       return ListView(
                         padding: const EdgeInsets.symmetric(horizontal: 24),
                         children: [

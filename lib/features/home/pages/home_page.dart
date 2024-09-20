@@ -8,6 +8,7 @@ import '../../../core/widgets/buttons/settings_button.dart';
 import '../../../core/widgets/custom_scaffold.dart';
 import '../../../core/widgets/texts/text_r.dart';
 import '../../recipes/bloc/recipes_bloc.dart';
+import '../widgets/home_no_recipes.dart';
 import '../widgets/home_recipe_card.dart';
 import '../widgets/home_tile.dart';
 
@@ -78,6 +79,8 @@ class HomePage extends StatelessWidget {
             child: BlocBuilder<RecipesBloc, RecipesState>(
               builder: (context, state) {
                 if (state is RecipesLoadedState) {
+                  if (state.recipes.isEmpty) return const HomeNoRecipes();
+
                   return ListView(
                     scrollDirection: Axis.horizontal,
                     children: [

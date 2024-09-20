@@ -1,3 +1,4 @@
+import 'package:coffee_expert/core/widgets/buttons/delete_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
@@ -15,12 +16,16 @@ class CustomAppbar extends StatelessWidget {
     required this.title,
     this.settings = true,
     this.edit = false,
+    this.delete = false,
+    this.onDelete,
     this.recipe,
   });
 
   final String title;
   final bool settings;
   final bool edit;
+  final bool delete;
+  final void Function()? onDelete;
   final Recipe? recipe;
 
   @override
@@ -57,6 +62,7 @@ class CustomAppbar extends StatelessWidget {
           ),
           if (settings) const SettingsButton(),
           if (edit) EditButton(recipe: recipe),
+          if (delete) DeleteButton(onPressed: onDelete),
           const SizedBox(width: 24),
         ],
       ),
