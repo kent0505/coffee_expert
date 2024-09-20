@@ -34,6 +34,7 @@ class VarietiesCard extends StatelessWidget {
                 child: Image.asset(
                   variety.image1,
                   height: 158,
+                  width: double.infinity,
                   fit: BoxFit.cover,
                 ),
               ),

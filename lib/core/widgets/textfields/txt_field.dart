@@ -10,7 +10,6 @@ class TxtField extends StatefulWidget {
     required this.hintText,
     this.multiline = false,
     this.number = false,
-    this.length = 200,
     required this.onChanged,
   });
 
@@ -18,7 +17,7 @@ class TxtField extends StatefulWidget {
   final String hintText;
   final bool multiline;
   final bool number;
-  final int length;
+
   final void Function() onChanged;
 
   @override
@@ -26,8 +25,8 @@ class TxtField extends StatefulWidget {
 }
 
 class _TxtFieldState extends State<TxtField> {
-  double _height() {
-    if (widget.multiline) return 196;
+  double? _height() {
+    if (widget.multiline) return null;
     return 46;
   }
 
@@ -43,10 +42,17 @@ class _TxtFieldState extends State<TxtField> {
   }
 
   List<TextInputFormatter>? _inputFormatters() {
-    final length = LengthLimitingTextInputFormatter(widget.length);
+    // final length = LengthLimitingTextInputFormatter(widget.length);
     final digit = FilteringTextInputFormatter.digitsOnly;
-    if (widget.number) return [length, digit];
-    return [length];
+    if (widget.number) {
+      return [
+        // length,
+        digit,
+      ];
+    }
+    return [
+      // length,
+    ];
   }
 
   @override
