@@ -191,6 +191,7 @@ class _EditRecipePageState extends State<EditRecipePage> {
                     TxtField(
                       controller: controller2,
                       hintText: 'Enter',
+                      multiline: true,
                       onChanged: checkActive,
                     ),
                     const SizedBox(height: 24),

@@ -1,3 +1,4 @@
+import 'package:coffee_expert/core/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,7 +29,7 @@ class CafesPage extends StatelessWidget {
 
                       return GridView.count(
                         crossAxisCount: 2,
-                        childAspectRatio: 0.8,
+                        childAspectRatio: getWidth(context) > 500 ? 1.8 : 0.8,
                         crossAxisSpacing: 14,
                         mainAxisSpacing: 14,
                         padding: const EdgeInsets.only(

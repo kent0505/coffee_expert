@@ -1,3 +1,4 @@
+import 'package:coffee_expert/core/utils.dart';
 import 'package:flutter/material.dart';
 
 import '../config/app_colors.dart';
@@ -32,7 +33,7 @@ class CustomScaffold extends StatelessWidget {
                 ),
                 if (home)
                   Container(
-                    height: 240,
+                    height: 240 + getStatusBar(context),
                     decoration: BoxDecoration(
                       color: recipe ? AppColors.card1 : AppColors.bg2,
                       borderRadius: const BorderRadius.vertical(
