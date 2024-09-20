@@ -6,7 +6,7 @@ import '../../core/config/router.dart';
 import '../../core/db/prefs.dart';
 import '../../core/widgets/custom_scaffold.dart';
 import '../../core/widgets/texts/text_r.dart';
-import '../test/bloc/test_bloc.dart';
+import '../recipes/bloc/recipes_bloc.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -25,7 +25,7 @@ class _SplashPageState extends State<SplashPage> {
       });
     });
 
-    if (mounted) context.read<TestBloc>().add(GetTestEvent());
+    if (mounted) context.read<RecipesBloc>().add(GetRecipesEvent());
 
     await getData().then((onboard) {
       Future.delayed(const Duration(seconds: 2), () {

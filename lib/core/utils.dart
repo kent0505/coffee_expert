@@ -1,6 +1,7 @@
 import 'dart:developer' as developer;
 
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
 double navBarHeight = 60;
@@ -84,14 +85,34 @@ void precacheImages(BuildContext context) {
       'assets/onboard1.png',
       'assets/onboard2.png',
       'assets/onboard3.png',
+      'assets/onboard4.png',
       'assets/recipe1.png',
       'assets/recipe2.png',
       'assets/recipe3.png',
+      'assets/varieties1.png',
+      'assets/varieties2.png',
+      'assets/varieties3.png',
+      'assets/varieties4.png',
+      'assets/varieties5.png',
+      'assets/varieties6.png',
+      'assets/varieties7.png',
+      'assets/varieties8.png',
     ];
     for (String assets in imageAssets) {
       precacheImage(AssetImage(assets), context);
     }
   } catch (e) {
     logger(e);
+  }
+}
+
+Future<XFile> pickImage() async {
+  try {
+    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (image == null) return XFile('');
+    return image;
+  } catch (e) {
+    logger(e);
+    return XFile('');
   }
 }

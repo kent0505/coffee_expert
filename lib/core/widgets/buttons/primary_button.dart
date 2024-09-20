@@ -11,6 +11,7 @@ class PrimaryButton extends StatelessWidget {
     this.active = true,
     this.width,
     this.bottom = false,
+    this.add = false,
     required this.onPressed,
   });
 
@@ -18,6 +19,7 @@ class PrimaryButton extends StatelessWidget {
   final bool active;
   final double? width;
   final bool bottom;
+  final bool add;
   final void Function() onPressed;
 
   @override
@@ -51,7 +53,9 @@ class PrimaryButton extends StatelessWidget {
                   color: active ? AppColors.white : AppColors.white48,
                 ),
               ),
-              SvgPicture.asset('assets/arrow-right2.svg'),
+              SvgPicture.asset(
+                add ? 'assets/add.svg' : 'assets/arrow-right2.svg',
+              ),
               const SizedBox(width: 6),
             ],
           ),

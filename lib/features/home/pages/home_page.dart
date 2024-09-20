@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/models/recipe.dart';
 import '../../../core/utils.dart';
 import '../../../core/config/router.dart';
 import '../../../core/config/app_colors.dart';
 import '../../../core/widgets/buttons/settings_button.dart';
 import '../../../core/widgets/custom_scaffold.dart';
 import '../../../core/widgets/texts/text_r.dart';
+import '../../recipes/bloc/recipes_bloc.dart';
 import '../widgets/home_recipe_card.dart';
 import '../widgets/home_tile.dart';
 
@@ -74,15 +75,28 @@ class HomePage extends StatelessWidget {
           const SizedBox(height: 20),
           SizedBox(
             height: 220,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: [
-                const SizedBox(width: 24),
-                HomeRecipeCard(recipe: recipe1),
-                HomeRecipeCard(recipe: recipe2),
-                HomeRecipeCard(recipe: recipe3),
-                const SizedBox(width: 10),
-              ],
+            child: BlocBuilder<RecipesBloc, RecipesState>(
+              builder: (context, state) {
+                if (state is RecipesLoadedState) {
+                  return ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      const SizedBox(width: 24),
+                      ...List.generate(
+                        state.recipes.length,
+                        (index) {
+                          return HomeRecipeCard(
+                            recipe: state.recipes[index],
+                          );
+                        },
+                      ),
+                      const SizedBox(width: 10),
+                    ],
+                  );
+                }
+
+                return Container();
+              },
             ),
           ),
           const SizedBox(height: 15),
