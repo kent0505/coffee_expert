@@ -145,7 +145,7 @@ class _NewsAddPageState extends State<NewsAddPage> {
                       multiline: true,
                       onChanged: checkActive,
                     ),
-                    const SizedBox(height: 70 + 56 + 14),
+                    SizedBox(height: 70 + 56 + 24 + getBottom(context)),
                   ],
                 ),
               ),

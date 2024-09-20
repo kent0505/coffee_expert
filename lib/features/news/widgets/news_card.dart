@@ -1,10 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 import '../../../core/config/app_colors.dart';
 import '../../../core/config/router.dart';
 import '../../../core/models/news.dart';
-import '../../../core/widgets/custom_image.dart';
 import '../../../core/widgets/texts/text_r.dart';
 
 class NewsCard extends StatelessWidget {
@@ -30,11 +32,28 @@ class NewsCard extends StatelessWidget {
         child: Row(
           children: [
             ClipRRect(
-              child: CustomImage(
-                image: news.image,
+              borderRadius: BorderRadius.circular(14),
+              child: Image.file(
+                File(news.image),
+                fit: BoxFit.cover,
                 height: 80,
                 width: 120,
-                borderRadius: 14,
+                errorBuilder: (context, error, stackTrace) {
+                  return CachedNetworkImage(
+                    imageUrl: news.image,
+                    fit: BoxFit.cover,
+                    height: 80,
+                    width: 120,
+                    errorWidget: (context, url, error) {
+                      return Image.asset(
+                        'assets/varieties1.png',
+                        fit: BoxFit.cover,
+                        height: 80,
+                        width: 120,
+                      );
+                    },
+                  );
+                },
               ),
             ),
             const SizedBox(width: 14),

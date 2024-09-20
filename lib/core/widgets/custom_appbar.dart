@@ -57,8 +57,13 @@ class CustomAppbar extends StatelessWidget {
           ),
           const SizedBox(width: 14),
           Expanded(
-            child: TextB(title, fontSize: 20),
+            child: TextB(
+              title,
+              fontSize: 20,
+              maxLines: 2,
+            ),
           ),
+          const SizedBox(width: 14),
           if (settings) const SettingsButton(),
           if (edit) EditButton(onPressed: onEdit),
           if (delete) DeleteButton(onPressed: onDelete),

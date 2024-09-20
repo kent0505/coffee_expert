@@ -1,3 +1,4 @@
+import 'package:coffee_expert/core/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,7 +38,8 @@ class NewsPage extends StatelessWidget {
                                 news: state.news[index],
                               );
                             },
-                          )
+                          ),
+                          SizedBox(height: 70 + 56 + 10 + getBottom(context))
                         ],
                       );
                     }

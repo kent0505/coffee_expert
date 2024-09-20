@@ -1,10 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 import '../../../core/config/router.dart';
 import '../../../core/models/news.dart';
 import '../../../core/utils.dart';
 import '../../../core/widgets/custom_appbar.dart';
-import '../../../core/widgets/custom_image.dart';
 import '../../../core/widgets/custom_scaffold.dart';
 import '../../../core/widgets/texts/text_r.dart';
 
@@ -21,7 +23,7 @@ class NewsDetailPage extends StatelessWidget {
       body: Column(
         children: [
           CustomAppbar(
-            title: 'Add News',
+            title: news.title,
             edit: true,
             settings: false,
             onEdit: () {
@@ -33,10 +35,27 @@ class NewsDetailPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 24),
               children: [
                 const SizedBox(height: 12),
-                CustomImage(
-                  image: news.image,
-                  height: 203,
-                  borderRadius: 24,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(24),
+                  child: Image.file(
+                    File(news.image),
+                    height: 203,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return CachedNetworkImage(
+                        imageUrl: news.image,
+                        height: 203,
+                        fit: BoxFit.cover,
+                        errorWidget: (context, url, error) {
+                          return Image.asset(
+                            'assets/varieties1.png',
+                            fit: BoxFit.cover,
+                            height: 203,
+                          );
+                        },
+                      );
+                    },
+                  ),
                 ),
                 const SizedBox(height: 24),
                 TextM(
