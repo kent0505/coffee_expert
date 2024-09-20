@@ -56,7 +56,7 @@ class _EditRecipePageState extends State<EditRecipePage> {
     }
   }
 
-  void onSave() {
+  void onEdit() {
     context.read<RecipesBloc>().add(
           EditRecipesEvent(
             recipe: Recipe(
@@ -210,7 +210,7 @@ class _EditRecipePageState extends State<EditRecipePage> {
             active: active,
             bottom: true,
             edit: true,
-            onPressed: onSave,
+            onPressed: onEdit,
           ),
         ],
       ),

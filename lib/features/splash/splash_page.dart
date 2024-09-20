@@ -6,6 +6,7 @@ import '../../core/config/router.dart';
 import '../../core/db/prefs.dart';
 import '../../core/widgets/custom_scaffold.dart';
 import '../../core/widgets/texts/text_r.dart';
+import '../cafes/bloc/cafes_bloc.dart';
 import '../recipes/bloc/recipes_bloc.dart';
 
 class SplashPage extends StatefulWidget {
@@ -25,7 +26,10 @@ class _SplashPageState extends State<SplashPage> {
       });
     });
 
-    if (mounted) context.read<RecipesBloc>().add(GetRecipesEvent());
+    if (mounted) {
+      context.read<RecipesBloc>().add(GetRecipesEvent());
+      context.read<CafesBloc>().add(GetCafesEvent());
+    }
 
     await getData().then((onboard) {
       Future.delayed(const Duration(seconds: 2), () {

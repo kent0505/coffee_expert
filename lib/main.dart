@@ -6,6 +6,7 @@ import 'core/config/router.dart';
 import 'core/config/themes.dart';
 import 'core/db/db.dart';
 import 'core/utils.dart';
+import 'features/cafes/bloc/cafes_bloc.dart';
 import 'features/home/bloc/home_bloc.dart';
 import 'features/recipes/bloc/recipes_bloc.dart';
 
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => HomeBloc()),
         BlocProvider(create: (context) => RecipesBloc()),
+        BlocProvider(create: (context) => CafesBloc()),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,

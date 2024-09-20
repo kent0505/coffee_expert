@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/config/app_colors.dart';
+import '../../../core/config/router.dart';
 import '../../../core/models/recipe.dart';
 import '../../../core/widgets/custom_appbar.dart';
 import '../../../core/widgets/custom_image.dart';
@@ -23,7 +24,9 @@ class RecipeDetailPage extends StatelessWidget {
             title: 'Recipe',
             settings: false,
             edit: true,
-            recipe: recipe,
+            onEdit: () {
+              context.push(Routes.editRecipe, extra: recipe);
+            },
           ),
           Expanded(
             child: ListView(

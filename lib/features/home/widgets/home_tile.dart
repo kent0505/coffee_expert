@@ -79,7 +79,7 @@ class HomeTile extends StatelessWidget {
           if (title == 'Coffee varieties') {
             context.push(Routes.varieties);
           } else if (title == 'Popular cafes') {
-            context.push(Routes.varieties);
+            context.push(Routes.cafes);
           } else {
             context.push(Routes.varieties);
           }

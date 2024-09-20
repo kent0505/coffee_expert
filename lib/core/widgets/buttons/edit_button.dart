@@ -2,20 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../config/app_colors.dart';
-import '../../config/router.dart';
-import '../../models/recipe.dart';
 
 class EditButton extends StatelessWidget {
-  const EditButton({super.key, this.recipe});
+  const EditButton({super.key, this.onPressed});
 
-  final Recipe? recipe;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return CupertinoButton(
-      onPressed: () {
-        context.push(Routes.editRecipe, extra: recipe);
-      },
+      onPressed: onPressed,
       padding: EdgeInsets.zero,
       minSize: 44,
       child: Container(
