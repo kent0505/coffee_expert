@@ -81,7 +81,7 @@ class HomeTile extends StatelessWidget {
           } else if (title == 'Popular cafes') {
             context.push(Routes.cafes);
           } else {
-            context.push(Routes.varieties);
+            context.push(Routes.news);
           }
         },
         padding: EdgeInsets.zero,

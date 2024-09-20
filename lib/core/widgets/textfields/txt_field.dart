@@ -10,7 +10,7 @@ class TxtField extends StatefulWidget {
     required this.hintText,
     this.multiline = false,
     this.number = false,
-    this.length = 20,
+    this.length = 200,
     required this.onChanged,
   });
 

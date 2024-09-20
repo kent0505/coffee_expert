@@ -52,6 +52,7 @@ class RecipesPage extends StatelessWidget {
           PrimaryButton(
             title: 'Add New Recipe',
             bottom: true,
+            add: true,
             onPressed: () {
               context.push(Routes.addRecipe);
             },

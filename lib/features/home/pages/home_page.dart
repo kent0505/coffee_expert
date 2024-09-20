@@ -17,6 +17,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    precacheImages2(context);
+
     return CustomScaffold(
       home: true,
       body: Column(

@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../core/config/app_colors.dart';
 import '../../core/config/router.dart';
+import '../../core/db/prefs.dart';
 import '../../core/widgets/buttons/primary_button.dart';
 import '../../core/widgets/custom_scaffold.dart';
 import '../../core/widgets/texts/text_r.dart';
@@ -38,9 +39,11 @@ class _OnboardPageState extends State<OnboardPage> {
     });
   }
 
-  void onNext() {
+  void onNext() async {
     if (id == 3) {
-      context.go(Routes.home);
+      await saveOnboard().then((value) {
+        if (mounted) context.go(Routes.home);
+      });
     } else {
       id++;
       changeData();

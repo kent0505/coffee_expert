@@ -1,13 +1,17 @@
-import 'package:coffee_expert/features/cafes/pages/cafe_edit_page.dart';
 import 'package:go_router/go_router.dart';
 export 'package:go_router/go_router.dart';
 
 import '../../features/cafes/pages/cafe_add_page.dart';
 import '../../features/cafes/pages/cafe_detail_page.dart';
+import '../../features/cafes/pages/cafe_edit_page.dart';
 import '../../features/cafes/pages/cafes_page.dart';
 import '../../features/home/pages/contact_page.dart';
 import '../../features/home/pages/home_page.dart';
 import '../../features/home/pages/settings_page.dart';
+import '../../features/news/pages/news_add_page.dart';
+import '../../features/news/pages/news_detail_page.dart';
+import '../../features/news/pages/news_edit_page.dart';
+import '../../features/news/pages/news_page.dart';
 import '../../features/recipes/pages/add_recipe_page.dart';
 import '../../features/recipes/pages/edit_recipe_page.dart';
 import '../../features/recipes/pages/recipe_detail_page.dart';
@@ -17,6 +21,7 @@ import '../../features/splash/splash_page.dart';
 import '../../features/varieties/pages/varieties_page.dart';
 import '../../features/varieties/pages/variety_detail_page.dart';
 import '../models/cafe.dart';
+import '../models/news.dart';
 import '../models/recipe.dart';
 import '../models/variety.dart';
 
@@ -35,6 +40,10 @@ class Routes {
   static String cafeDetail = '/cafeDetail';
   static String cafeAdd = '/cafeAdd';
   static String cafeEdit = '/cafeEdit';
+  static String news = '/news';
+  static String newsDetail = '/newsDetail';
+  static String newsAdd = '/newsAdd';
+  static String newsEdit = '/newsEdit';
 }
 
 final routerConfig = GoRouter(
@@ -108,6 +117,26 @@ final routerConfig = GoRouter(
       path: Routes.cafeEdit,
       builder: (context, state) => CafeEditPage(
         cafe: state.extra as Cafe,
+      ),
+    ),
+    GoRoute(
+      path: Routes.news,
+      builder: (context, state) => const NewsPage(),
+    ),
+    GoRoute(
+      path: Routes.newsAdd,
+      builder: (context, state) => const NewsAddPage(),
+    ),
+    GoRoute(
+      path: Routes.newsEdit,
+      builder: (context, state) => NewsEditPage(
+        news: state.extra as News,
+      ),
+    ),
+    GoRoute(
+      path: Routes.newsDetail,
+      builder: (context, state) => NewsDetailPage(
+        news: state.extra as News,
       ),
     ),
   ],

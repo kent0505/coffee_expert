@@ -155,6 +155,13 @@ class _EditRecipePageState extends State<EditRecipePage> {
                                       child: Image.file(
                                         File(image.path),
                                         fit: BoxFit.cover,
+                                        errorBuilder:
+                                            (context, error, stackTrace) {
+                                          return Image.asset(
+                                            'assets/${widget.recipe.image}.png',
+                                            fit: BoxFit.cover,
+                                          );
+                                        },
                                       ),
                                     ),
                                   ),

@@ -89,6 +89,18 @@ void precacheImages(BuildContext context) {
       'assets/recipe1.png',
       'assets/recipe2.png',
       'assets/recipe3.png',
+    ];
+    for (String assets in imageAssets) {
+      precacheImage(AssetImage(assets), context);
+    }
+  } catch (e) {
+    logger(e);
+  }
+}
+
+void precacheImages2(BuildContext context) {
+  try {
+    List<String> imageAssets = [
       'assets/varieties1.png',
       'assets/varieties2.png',
       'assets/varieties3.png',

@@ -59,6 +59,7 @@ class CafesPage extends StatelessWidget {
           PrimaryButton(
             title: 'Add New Cafe',
             bottom: true,
+            add: true,
             onPressed: () {
               context.push(Routes.cafeAdd);
             },

@@ -152,6 +152,13 @@ class _CafeEditPageState extends State<CafeEditPage> {
                                       child: Image.file(
                                         File(image.path),
                                         fit: BoxFit.cover,
+                                        errorBuilder:
+                                            (context, error, stackTrace) {
+                                          return Image.asset(
+                                            'assets/${widget.cafe.image}.png',
+                                            fit: BoxFit.cover,
+                                          );
+                                        },
                                       ),
                                     ),
                                   ),
@@ -206,7 +213,7 @@ class _CafeEditPageState extends State<CafeEditPage> {
             title: 'Save Changes',
             active: active,
             bottom: true,
-            add: true,
+            edit: true,
             onPressed: onSave,
           ),
         ],

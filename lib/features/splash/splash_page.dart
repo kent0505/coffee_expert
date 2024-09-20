@@ -7,6 +7,7 @@ import '../../core/db/prefs.dart';
 import '../../core/widgets/custom_scaffold.dart';
 import '../../core/widgets/texts/text_r.dart';
 import '../cafes/bloc/cafes_bloc.dart';
+import '../news/bloc/news_bloc.dart';
 import '../recipes/bloc/recipes_bloc.dart';
 
 class SplashPage extends StatefulWidget {
@@ -29,6 +30,7 @@ class _SplashPageState extends State<SplashPage> {
     if (mounted) {
       context.read<RecipesBloc>().add(GetRecipesEvent());
       context.read<CafesBloc>().add(GetCafesEvent());
+      context.read<NewsBloc>().add(GetNewsEvent());
     }
 
     await getData().then((onboard) {
