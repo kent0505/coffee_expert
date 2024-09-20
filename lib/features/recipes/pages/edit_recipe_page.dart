@@ -5,9 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../core/config/app_colors.dart';
 import '../../../core/models/recipe.dart';
 import '../../../core/utils.dart';
-import '../../../core/config/app_colors.dart';
 import '../../../core/widgets/buttons/primary_button.dart';
 import '../../../core/widgets/custom_appbar.dart';
 import '../../../core/widgets/custom_scaffold.dart';
@@ -15,20 +15,22 @@ import '../../../core/widgets/textfields/txt_field.dart';
 import '../../../core/widgets/texts/text_r.dart';
 import '../bloc/recipes_bloc.dart';
 
-class AddRecipePage extends StatefulWidget {
-  const AddRecipePage({super.key});
+class EditRecipePage extends StatefulWidget {
+  const EditRecipePage({super.key, required this.recipe});
+
+  final Recipe recipe;
 
   @override
-  State<AddRecipePage> createState() => _AddRecipePageState();
+  State<EditRecipePage> createState() => _EditRecipePageState();
 }
 
-class _AddRecipePageState extends State<AddRecipePage> {
+class _EditRecipePageState extends State<EditRecipePage> {
   final controller1 = TextEditingController();
   final controller2 = TextEditingController();
   final controller3 = TextEditingController();
   final controller4 = TextEditingController();
 
-  bool active = false;
+  bool active = true;
 
   void checkActive() {
     setState(() {
@@ -54,9 +56,9 @@ class _AddRecipePageState extends State<AddRecipePage> {
 
   void onSave() {
     context.read<RecipesBloc>().add(
-          AddRecipesEvent(
+          EditRecipesEvent(
             recipe: Recipe(
-              id: getCurrentTimestamp(),
+              id: widget.recipe.id,
               title: controller1.text,
               description: '',
               ingredients: controller2.text,
@@ -66,6 +68,16 @@ class _AddRecipePageState extends State<AddRecipePage> {
           ),
         );
     context.pop();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    controller1.text = widget.recipe.title;
+    controller2.text = widget.recipe.ingredients;
+    controller3.text = widget.recipe.recipe;
+    controller4.text = widget.recipe.image;
+    image = XFile(widget.recipe.image);
   }
 
   @override
@@ -84,7 +96,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
         children: [
           Column(
             children: [
-              const CustomAppbar(title: 'Add New Recipe'),
+              const CustomAppbar(title: 'Edit Recipe'),
               Expanded(
                 child: ListView(
                   padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -172,7 +184,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
             title: 'Save Changes',
             active: active,
             bottom: true,
-            add: true,
+            edit: true,
             onPressed: onSave,
           ),
         ],

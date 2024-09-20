@@ -19,7 +19,12 @@ class RecipeDetailPage extends StatelessWidget {
       recipe: true,
       body: Column(
         children: [
-          const CustomAppbar(title: 'Recipe'),
+          CustomAppbar(
+            title: 'Recipe',
+            settings: false,
+            edit: true,
+            recipe: recipe,
+          ),
           Expanded(
             child: ListView(
               padding: const EdgeInsets.symmetric(horizontal: 24),

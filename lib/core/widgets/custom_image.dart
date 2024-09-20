@@ -25,11 +25,11 @@ class CustomImage extends StatelessWidget {
         width: width,
         child: Image.file(
           File(image),
+          fit: BoxFit.cover,
           errorBuilder: (context, error, stackTrace) {
             return Image.asset(
               'assets/$image.png',
               fit: BoxFit.cover,
-              width: width,
             );
           },
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../config/app_colors.dart';
@@ -12,6 +13,7 @@ class PrimaryButton extends StatelessWidget {
     this.width,
     this.bottom = false,
     this.add = false,
+    this.edit = false,
     required this.onPressed,
   });
 
@@ -20,6 +22,7 @@ class PrimaryButton extends StatelessWidget {
   final double? width;
   final bool bottom;
   final bool add;
+  final bool edit;
   final void Function() onPressed;
 
   @override
@@ -53,9 +56,24 @@ class PrimaryButton extends StatelessWidget {
                   color: active ? AppColors.white : AppColors.white48,
                 ),
               ),
-              SvgPicture.asset(
-                add ? 'assets/add.svg' : 'assets/arrow-right2.svg',
-              ),
+              edit
+                  ? Container(
+                      height: 44,
+                      width: 44,
+                      decoration: const BoxDecoration(
+                        color: AppColors.text3,
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Center(
+                        child: Icon(
+                          Icons.edit_rounded,
+                          color: AppColors.white,
+                        ),
+                      ),
+                    )
+                  : SvgPicture.asset(
+                      add ? 'assets/add.svg' : 'assets/arrow-right2.svg',
+                    ),
               const SizedBox(width: 6),
             ],
           ),

@@ -5,6 +5,7 @@ import '../../features/home/pages/contact_page.dart';
 import '../../features/home/pages/home_page.dart';
 import '../../features/home/pages/settings_page.dart';
 import '../../features/recipes/pages/add_recipe_page.dart';
+import '../../features/recipes/pages/edit_recipe_page.dart';
 import '../../features/recipes/pages/recipe_detail_page.dart';
 import '../../features/recipes/pages/recipes_page.dart';
 import '../../features/splash/onboard_page.dart';
@@ -21,6 +22,7 @@ class Routes {
   static String contact = '/contact';
   static String recipes = '/recipes';
   static String addRecipe = '/addRecipe';
+  static String editRecipe = '/editRecipe';
   static String recipeDetail = '/recipeDetail';
   static String varieties = '/varieties';
   static String varietyDetail = '/varietyDetail';
@@ -56,6 +58,12 @@ final routerConfig = GoRouter(
     GoRoute(
       path: Routes.addRecipe,
       builder: (context, state) => const AddRecipePage(),
+    ),
+    GoRoute(
+      path: Routes.editRecipe,
+      builder: (context, state) => EditRecipePage(
+        recipe: state.extra as Recipe,
+      ),
     ),
     GoRoute(
       path: Routes.recipeDetail,
